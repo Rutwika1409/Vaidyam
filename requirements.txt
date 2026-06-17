@@ -1,0 +1,28 @@
+# Web Framework
+fastapi
+uvicorn[standard]
+
+# Database
+supabase
+
+# Environment
+python-dotenv
+
+# File Upload
+python-multipart
+
+# PDF Processing
+PyMuPDF
+
+# OCR
+easyocr
+
+# Data Validation
+pydantic
+email-validator
+
+# HTTP Client
+httpx
+
+# AI — Groq
+groq
