@@ -1,0 +1,7 @@
+Using CPU. Note: This module is much faster with a GPU.
+base.co...
+✅ Groq AI ready
+⏳ Loading EasyOCR model... (first load takes ~10 seconds)
+✅ EasyOCR model loaded
+✅ vAIdyam backend v2.0 started
+📖 API Docs: http://localhost:8000/docs
