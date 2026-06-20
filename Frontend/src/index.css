@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base:       #080D1A;    /* deepest navy-black */
+  --bg-surface:    #0D1526;    /* card surfaces */
+  --bg-elevated:   #121E35;    /* elevated modals, sidebars */
+  --bg-border:     rgba(255, 255, 255, 0.07);
+  --teal:          #00C9A7;    /* brand primary */
+  --teal-dim:      #00A389;    /* hover state */
+  --teal-glow:     rgba(0, 201, 167, 0.18);
+  --blue-soft:     #4F8EF7;    /* secondary accent */
+  --red-alert:     #FF5C5C;    /* emergency */
+  --amber-warn:    #FFD166;    /* warnings */
+  --text-1:        #EEF2FF;    /* primary text */
+  --text-2:        #8A9BC4;    /* muted */
+  --text-3:        #5A6A8E;    /* disabled/hint */
+  --success:       #34D399;
+  --gradient-text: linear-gradient(135deg, #00C9A7 0%, #4F8EF7 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-1);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-1);
+}
+
+/* Premium scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-elevated);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-3);
+}
+
+/* Custom premium card utility class */
+.premium-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--bg-border);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+}
+
+/* Premium glow teal CTA button */
+.teal-btn {
+  background: var(--teal);
+  color: #000;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 12px 28px;
+  box-shadow: 0 0 20px var(--teal-glow);
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, background-color 0.15s ease-out;
+}
+.teal-btn:hover {
+  transform: translateY(-1px);
+  background-color: var(--teal-dim);
+  box-shadow: 0 0 32px var(--teal-glow);
+}
+.teal-btn:active {
+  transform: translateY(1px);
+}
+.teal-btn:disabled {
+  background-color: var(--text-3);
+  color: var(--bg-elevated);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Signature visual animations */
+@keyframes pulse-travel {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.health-pulse-path {
+  stroke: var(--teal);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 1000;
+  animation: pulse-travel 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, var(--bg-surface) 25%, var(--bg-elevated) 50%, var(--bg-surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes float-pulse {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1.1) translateY(-10px);
+    opacity: 0.25;
+  }
+}
+
+.glow-circle {
+  background: var(--teal);
+  filter: blur(100px);
+  animation: float-pulse 8s ease-in-out infinite;
+}
+
+/* Concentric rings for microphone audio-record animation */
+@keyframes ring-expand {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.ring-pulse-1 {
+  animation: ring-expand 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+.ring-pulse-2 {
+  animation: ring-expand 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  animation-delay: 0.6s;
+}
+.ring-pulse-3 {
+  animation: ring-expand 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  animation-delay: 1.2s;
+}
+
+/* Gradient text utilities */
+.text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── LIGHT THEME VARIABLES ─── */
+:root.light {
+  --bg-base:       #F1F5F9;    /* slate-100 */
+  --bg-surface:    #FFFFFF;    /* white card surfaces */
+  --bg-elevated:   #E2E8F0;    /* slate-200 for sidebars, inputs */
+  --bg-border:     rgba(0, 0, 0, 0.08);
+  
+  --teal:          #0D9488;    /* solid dark teal for readability */
+  --teal-dim:      #0F766E;    /* hover teal */
+  --teal-glow:     rgba(13, 148, 136, 0.12);
+  --blue-soft:     #1D4ED8;    /* darker blue for light mode contrast */
+  --red-alert:     #DC2626;    /* red for alerts */
+  --amber-warn:    #B45309;    /* amber for warnings */
+  
+  --text-1:        #0F172A;    /* slate-900 primary text */
+  --text-2:        #475569;    /* slate-600 secondary text */
+  --text-3:        #64748B;    /* slate-500 muted text */
+  
+  --success:       #059669;
+  --gradient-text: linear-gradient(135deg, #0D9488 0%, #1D4ED8 100%);
+}
+
+/* Smooth transition for theme switching */
+body, header, aside, main, nav, input, textarea, select, button, .premium-card {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Map static dark-themed Tailwind hex colors to theme-aware variables in Light Mode */
+:root.light .text-\[\#EEF2FF\] {
+  color: var(--text-1) !important;
+}
+:root.light .text-\[\#8A9BC4\] {
+  color: var(--text-2) !important;
+}
+:root.light .text-\[\#5A6A8E\] {
+  color: var(--text-3) !important;
+}
+:root.light .bg-navy {
+  background-color: var(--bg-base) !important;
+}
+:root.light .bg-navy-surface {
+  background-color: var(--bg-surface) !important;
+}
+:root.light .bg-navy-elevated {
+  background-color: var(--bg-elevated) !important;
+}
+:root.light .border-\[\#ffffff07\],
+:root.light .border-\[\#ffffff05\],
+:root.light .border-\[\#ffffff03\],
+:root.light .border-\[\#ffffff0a\],
+:root.light .border-\[\#ffffff04\],
+:root.light .border-r-\[\#ffffff07\],
+:root.light .border-b-\[\#ffffff07\],
+:root.light .border-b-\[\#ffffff05\],
+:root.light .border-t-\[\#ffffff07\],
+:root.light .border-t-\[\#ffffff04\],
+:root.light .border-t-\[\#ffffff05\] {
+  border-color: var(--bg-border) !important;
+}
+:root.light .bg-navy\/30 {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+:root.light .bg-navy\/50 {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+:root.light .bg-navy\/60 {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+:root.light .bg-navy-elevated\/40 {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+:root.light .bg-navy-elevated\/20 {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+:root.light .bg-navy-elevated\/80 {
+  background-color: var(--bg-elevated) !important;
+}
+:root.light .hover\:bg-navy-elevated\/40:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+:root.light .hover\:bg-navy\/50:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+:root.light .bg-\[\#080D1A\] {
+  background-color: var(--bg-base) !important;
+}
+:root.light .bg-\[\#00C9A7\]\/10 {
+  background-color: rgba(13, 148, 136, 0.08) !important;
+}
+:root.light .hover\:bg-red-500\/10:hover {
+  background-color: rgba(220, 38, 38, 0.08) !important;
+}
+
+/* Premium Logo Font styling */
+.logo-text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
